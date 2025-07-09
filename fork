@@ -3,6 +3,13 @@
 
 #
 # Binaries for programs and plugins
+psd
+thumb
+sketch
+
+# IDE
+.idea
+.vscode
 
 
 # Test binary, built with `go test -c`
@@ -37,10 +44,3 @@ bower_components
 
 *.sublime*
 
-psd
-thumb
-sketch
-
-# IDE
-.idea
-.vscode
