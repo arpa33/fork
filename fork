@@ -10,8 +10,6 @@ sketch
 # IDE
 .idea
 .vscode
-
-
 # Test binary, built with `go test -c`
 *.test
 
@@ -31,7 +29,15 @@ go.work.sum
 *.dylib
 # env file
 .env
+#
+# Binaries for programs and plugins
+psd
+thumb
+sketch
 
+# IDE
+.idea
+.vscode
 ### react template
 .DS_*
 *.log
