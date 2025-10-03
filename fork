@@ -18,7 +18,10 @@ sketch
 # https://github.com/github/gitignore/blob/main/community/Golang/Go.AllowList.gitignore
 # Dependency directories (remove the comment below to include it)
 # vendor/
-
+# IDE
+.idea
+.vscode
+# Test binary, b
 # Go workspace file
 go.work
 go.work.sum
