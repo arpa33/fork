@@ -1,24 +1,7 @@
 ### Go template
 # If you prefer the allow list template instead of the deny list, see community template:
 
-#
-# Binaries for programs and plugins
-psd
-thumb
-sketch
-# vendor/
-# IDE
-.idea
-.vscode
-# Test binary, b
-# Go workspace file
-go.work
-go.work.sum
-*.exe
-*.exe~
-# IDE
-.idea
-.vscode
+
 # Test binary, built with `go test -c`
 *.test
 
@@ -47,7 +30,24 @@ sketch
 logs
 **/*.backup.*
 **/*.back.*
-
+#
+# Binaries for programs and plugins
+psd
+thumb
+sketch
+# vendor/
+# IDE
+.idea
+.vscode
+# Test binary, b
+# Go workspace file
+go.work
+go.work.sum
+*.exe
+*.exe~
+# IDE
+.idea
+.vscode
 node_modules
 bower_components
 
