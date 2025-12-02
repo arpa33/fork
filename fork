@@ -4,6 +4,15 @@
 
 # Test binary, built with `go test -c`
 *.test
+*.exe
+*.exe~
+# IDE
+.idea
+.vscode
+node_modules
+bower_components
+
+*.sublime*
 
 
 *.dll
@@ -43,13 +52,4 @@ sketch
 # Go workspace file
 go.work
 go.work.sum
-*.exe
-*.exe~
-# IDE
-.idea
-.vscode
-node_modules
-bower_components
-
-*.sublime*
 
