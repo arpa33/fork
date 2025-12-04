@@ -1,5 +1,22 @@
 
 
+
+logs
+**/*.backup.*
+**/*.back.*
+#### Go template
+# If you prefer the allow list template instead of the deny list, see community template:
+
+
+# Test binary, built with `go test -c`
+*.test
+*.exe
+*.exe~
+# IDE
+.idea
+.vscode
+node_modules
+bower_components
 *.dll
 *.so
 *.dylib
@@ -17,23 +34,6 @@ sketch
 ### react template
 .DS_*
 *.log
-logs
-**/*.backup.*
-**/*.back.*
-#### Go template
-# If you prefer the allow list template instead of the deny list, see community template:
-
-
-# Test binary, built with `go test -c`
-*.test
-*.exe
-*.exe~
-# IDE
-.idea
-.vscode
-node_modules
-bower_components
-
 *.sublime*
 
 # Binaries for programs and plugins
