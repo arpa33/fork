@@ -1,3 +1,17 @@
+# IDE
+.idea
+.vscode
+### react template
+.DS_*
+*.log
+*.sublime*
+
+# Binaries for programs and plugins
+psd
+thumb# Output of the go coverage tool, specifically when used with LiteIDE
+*.out
+# https://github.com/github/gitignore/blob/main/community/Golang/Go.AllowList.gitignore
+# Dependency directories (remove the comment below to include it)
 
 
 
@@ -28,20 +42,6 @@ psd
 thumb
 sketch
 
-# IDE
-.idea
-.vscode
-### react template
-.DS_*
-*.log
-*.sublime*
-
-# Binaries for programs and plugins
-psd
-thumb# Output of the go coverage tool, specifically when used with LiteIDE
-*.out
-# https://github.com/github/gitignore/blob/main/community/Golang/Go.AllowList.gitignore
-# Dependency directories (remove the comment below to include it)
 
 sketch
 # vendor/
