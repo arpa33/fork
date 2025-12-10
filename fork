@@ -4,7 +4,15 @@ thumb# Output of the go coverage tool, specifically when used with LiteIDE
 *.out
 # https://github.com/github/gitignore/blob/main/community/Golang/Go.AllowList.gitignore
 # Dependency directories (remove the comment below to include it)
-
+sketch
+# vendor/
+# IDE
+.idea
+.vscode
+# Test binary, b
+# Go workspace file
+go.work
+go.work.sum
 
 
 logs
@@ -43,13 +51,5 @@ sketch
 
 
 
-sketch
-# vendor/
-# IDE
-.idea
-.vscode
-# Test binary, b
-# Go workspace file
-go.work
-go.work.sum
+
 
