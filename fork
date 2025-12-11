@@ -13,7 +13,16 @@ sketch
 # Go workspace file
 go.work
 go.work.sum
-
+psd
+thumb
+sketch
+# IDE
+.idea
+.vscode
+### react template
+.DS_*
+*.log
+*.sublime*
 
 logs
 **/*.backup.*
@@ -38,16 +47,7 @@ bower_components
 .env
 #
 # Binaries for programs and plugins
-psd
-thumb
-sketch
-# IDE
-.idea
-.vscode
-### react template
-.DS_*
-*.log
-*.sublime*
+
 
 
 
