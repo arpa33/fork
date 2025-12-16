@@ -20,15 +20,7 @@ thumb# Output of the go coverage tool, specifically when used with LiteIDE
 *.out
 # https://github.com/github/gitignore/blob/main/community/Golang/Go.AllowList.gitignore
 # Dependency directories (remove the comment below to include it)
-sketch
-# vendor/
-# IDE
-.idea
-.vscode
-# Test binary, b
-# Go workspace file
-go.work
-go.work.sum
+
 psd
 thumb
 sketch
@@ -46,7 +38,15 @@ logs
 #### Go template
 # If you prefer the allow list template instead of the deny list, see community template:
 
-
+sketch
+# vendor/
+# IDE
+.idea
+.vscode
+# Test binary, b
+# Go workspace file
+go.work
+go.work.sum
 
 
 
