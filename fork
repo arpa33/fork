@@ -12,7 +12,16 @@ bower_components
 *.dylib
 # env file
 .env
-#
+#sketch
+# vendor/
+# IDE
+.idea
+.vscode
+# Test binary, b
+# Go workspace file
+go.work
+go.work.sum
+
 # Binaries for programs and plugins
 # Binaries for programs and plugins
 psd
@@ -38,15 +47,6 @@ logs
 #### Go template
 # If you prefer the allow list template instead of the deny list, see community template:
 
-sketch
-# vendor/
-# IDE
-.idea
-.vscode
-# Test binary, b
-# Go workspace file
-go.work
-go.work.sum
 
 
 
