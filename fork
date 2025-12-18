@@ -46,7 +46,22 @@ logs
 **/*.back.*
 #### Go template
 # If you prefer the allow list template instead of the deny list, see community template:
-
+*.exe~
+# IDE
+.idea
+.vscode
+node_modules
+bower_components
+*.dll
+*.so
+*.dylib
+# env file
+.env
+#sketch
+# vendor/
+# IDE
+.idea
+.vscode
 
 
 
