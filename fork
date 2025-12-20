@@ -29,7 +29,16 @@ thumb# Output of the go coverage tool, specifically when used with LiteIDE
 # Go workspace file
 go.work
 go.work.sum
-
+*.dll
+*.so
+*.dylib
+# env file
+.env
+#sketch
+# vendor/
+# IDE
+.idea
+.vscode
 psd
 thumb
 sketch
@@ -52,16 +61,7 @@ logs
 .vscode
 node_modules
 bower_components
-*.dll
-*.so
-*.dylib
-# env file
-.env
-#sketch
-# vendor/
-# IDE
-.idea
-.vscode
+
 
 
 
