@@ -1,18 +1,4 @@
-# Test binary, built with `go test -c`
-*.test
-*.exe
-*.exe~
-# IDE
-.idea
-.vscode
-node_modules
-bower_components
-*.dll
-*.so
-*.dylib
-# env file
-.env
-#sketch
+
 # vendor/
 # IDE
 .idea
@@ -62,7 +48,21 @@ logs
 node_modules
 bower_components
 
-
+# Test binary, built with `go test -c`
+*.test
+*.exe
+*.exe~
+# IDE
+.idea
+.vscode
+node_modules
+bower_components
+*.dll
+*.so
+*.dylib
+# env file
+.env
+#sketch
 
 
 
