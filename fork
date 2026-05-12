@@ -25,6 +25,10 @@ go.work.sum
 # IDE
 .idea
 .vscode
+
+# Binaries for programs and plugins
+# Binaries for programs and plugins
+psd
 psd
 thumb
 sketch
