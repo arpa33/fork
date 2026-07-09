@@ -7,20 +7,7 @@
 # Binaries for programs and plugins
 # Binaries for programs and plugins
 psd
-thumb# Output of the go coverage tool, specifically when used with LiteIDE
-*.out
-#
-go.work
-go.work.sum
-*.dll
-*.so
-*.dylib
-# env file
-.env
-#sketch
-# vendor/
-# IDE
-.idea
+
 .vscode
 
 # Binaries for programs and plugins
@@ -64,7 +51,20 @@ bower_components
 # env file
 .env
 #sketch
-
+thumb# Output of the go coverage tool, specifically when used with LiteIDE
+*.out
+#
+go.work
+go.work.sum
+*.dll
+*.so
+*.dylib
+# env file
+.env
+#sketch
+# vendor/
+# IDE
+.idea
  https://github.com/github/gitignore/blob/main/community/Golang/Go.AllowList.gitignore
 # Dependency directories (remove the comment below to include it)
 # Test binary, b
