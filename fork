@@ -35,7 +35,13 @@ logs
 .vscode
 node_modules
 bower_components
-
+go.work
+go.work.sum
+*.dll
+*.so
+*.dylib
+# env file
+.env
 # Test binary, built with `go test -c`
 *.test
 *.exe
@@ -54,13 +60,7 @@ bower_components
 thumb# Output of the go coverage tool, specifically when used with LiteIDE
 *.out
 #
-go.work
-go.work.sum
-*.dll
-*.so
-*.dylib
-# env file
-.env
+
 #sketch
 # vendor/
 # IDE
