@@ -1,74 +1,278 @@
-
-# vendor/
-# IDE
-.idea
-.vscode
-
-# Binaries for programs and plugins
-# Binaries for programs and plugins
-psd
-
-.vscode
-
-# Binaries for programs and plugins
-# Binaries for programs and plugins
-psd
-psd
-thumb
-sketch
-# IDE
-.idea
-.vscode
-### react template
-.DS_*
-*.log
-*.sublime*
-
-logs
-**/*.backup.*
-**/*.back.*
-#### Go template
-# If you prefer the allow list template instead of the deny list, see community template:
-*.exe~
-# IDE
-.idea
-.vscode
-node_modules
-bower_components
-go.work
-go.work.sum
-*.dll
-*.so
-*.dylib
-# env file
-.env
-# Test binary, built with `go test -c`
-*.test
-*.exe
-*.exe~
-# IDE
-.idea
-.vscode
-node_modules
-bower_components
-*.dll
-*.so
-*.dylib
-# env file
-.env
-#sketch
-thumb# Output of the go coverage tool, specifically when used with LiteIDE
-*.out
-#
-
-#sketch
-# vendor/
-# IDE
-.idea
- https://github.com/github/gitignore/blob/main/community/Golang/Go.AllowList.gitignore
-# Dependency directories (remove the comment below to include it)
-# Test binary, b
-# Go workspace file
+NexoraForge/
+├── src/
+│   ├── analyzer.py
+│   ├── repository.py
+│   ├── generator.py
+│   └── cli.py
+├── tests/
+│   ├── test_analyzer.py
+│   └── test_generator.py
+├── .github/
+│   └── workflows/
+│       └── ci.yml
+├── .gitignore
+├── LICENSE
+├── README.md
+├── pyproject.toml
+└── requirements.txt
+from pathlib import Path
+from dataclasses import dataclass
+from typing import List, Dict
+import json
 
 
+@dataclass
+class RepositoryReport:
+    name: str
+    files: int
+    directories: int
+    languages: Dict[str, int]
+    has_readme: bool
+    has_gitignore: bool
+    has_license: bool
+    score: int
 
+
+class RepositoryAnalyzer:
+    """Analyze repository structure and calculate a quality score."""
+
+    LANGUAGE_MAP = {
+        ".py": "Python",
+        ".js": "JavaScript",
+        ".ts": "TypeScript",
+        ".tsx": "TypeScript",
+        ".jsx": "JavaScript",
+        ".go": "Go",
+        ".rs": "Rust",
+        ".java": "Java",
+        ".cpp": "C++",
+        ".c": "C",
+        ".cs": "C#",
+        ".rb": "Ruby",
+        ".php": "PHP",
+        ".swift": "Swift",
+        ".kt": "Kotlin",
+    }
+
+    def __init__(self, repository_path: str):
+        self.root = Path(repository_path).resolve()
+
+    def analyze(self) -> RepositoryReport:
+        if not self.root.exists():
+            raise FileNotFoundError(
+                f"Repository not found: {self.root}"
+            )
+
+        files = [
+            path for path in self.root.rglob("*")
+            if path.is_file()
+            and ".git" not in path.parts
+        ]
+
+        directories = [
+            path for path in self.root.rglob("*")
+            if path.is_dir()
+            and ".git" not in path.parts
+        ]
+
+        languages = {}
+
+        for file in files:
+            language = self.LANGUAGE_MAP.get(file.suffix.lower())
+
+            if language:
+                languages[language] = languages.get(language, 0) + 1
+
+        has_readme = (self.root / "README.md").exists()
+        has_gitignore = (self.root / ".gitignore").exists()
+        has_license = any(
+            (self.root / name).exists()
+            for name in ["LICENSE", "LICENSE.md", "LICENSE.txt"]
+        )
+
+        score = self._calculate_score(
+            has_readme,
+            has_gitignore,
+            has_license,
+            len(files)
+        )
+
+        return RepositoryReport(
+            name=self.root.name,
+            files=len(files),
+            directories=len(directories),
+            languages=languages,
+            has_readme=has_readme,
+            has_gitignore=has_gitignore,
+            has_license=has_license,
+            score=score,
+        )
+
+    @staticmethod
+    def _calculate_score(
+        has_readme: bool,
+        has_gitignore: bool,
+        has_license: bool,
+        file_count: int
+    ) -> int:
+
+        score = 0
+
+        if has_readme:
+            score += 35
+
+        if has_gitignore:
+            score += 20
+
+        if has_license:
+            score += 20
+
+        if file_count > 0:
+            score += 15
+
+        if file_count >= 5:
+            score += 10
+
+        return min(score, 100)
+
+
+class RepositoryGenerator:
+    """Generate professional GitHub repository metadata."""
+
+    def __init__(self, repository_path: str):
+        self.root = Path(repository_path).resolve()
+
+    def create_readme(self, description: str) -> Path:
+        readme = self.root / "README.md"
+
+        content = f"""# {self.root.name}
+
+{description}
+
+## Features
+
+- Repository structure analysis
+- Programming language detection
+- Repository quality scoring
+- GitHub-ready metadata
+- Automated project reporting
+
+## Installation
+
+```bash
+git clone <repository-url>
+cd {self.root.name}
+pip install -r requirements.txt
+python -m src.cli .
+{self.root.name}/
+├── src/
+├── tests/
+├── README.md
+├── LICENSE
+└── pyproject.toml
+    readme.write_text(content, encoding="utf-8")
+    return readme
+
+def create_gitignore(self) -> Path:
+    gitignore = self.root / ".gitignore"
+
+    content = """__pycache__/
+    gitignore.write_text(content, encoding="utf-8")
+    return gitignore
+
+def create_license(self) -> Path:
+    license_file = self.root / "LICENSE"
+
+    content = """MIT License
+    license_file.write_text(content, encoding="utf-8")
+    return license_file
+@staticmethod
+def run(repository_path: str):
+    analyzer = RepositoryAnalyzer(repository_path)
+    report = analyzer.analyze()
+
+    output = {
+        "repository": report.name,
+        "files": report.files,
+        "directories": report.directories,
+        "languages": report.languages,
+        "github_metadata": {
+            "readme": report.has_readme,
+            "gitignore": report.has_gitignore,
+            "license": report.has_license,
+        },
+        "quality_score": report.score,
+    }
+
+    print(json.dumps(output, indent=4))
+
+    return report
+
+### `pyproject.toml`
+
+```toml
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "nexoraforge"
+version = "1.0.0"
+description = "A professional repository intelligence and GitHub project analysis toolkit."
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+
+authors = [
+    {name = "NexoraForge Contributors"}
+]
+
+keywords = [
+    "github",
+    "repository",
+    "developer-tools",
+    "code-analysis",
+    "automation",
+    "python"
+]
+
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12"
+]
+pytest>=8.0
+name: NexoraForge CI
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        python-version: ["3.10", "3.11", "3.12"]
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run tests
+        run: pytest
